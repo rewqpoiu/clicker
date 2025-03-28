@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<title>Clicker Game</title>
+<body style=
+    "text-align:center;
+    font-family:arial;
+    color:white;
+    background-image: url('IMG1.gif');
+    background-repeat:no-repeat;
+    background-size:100%150%;
+    ">
+<!-- Source:https://makeagif.com/gif/free-motion-background-download-now-free-glory-ENpm3c -->
+    <h1 style="font-size:80px">Clicker Game</h1>
+
+    <p id="add" style="font-size:80px">Start</p>
+
+    <button type="button" onclick="upGrade()" style="font-size:40px">
+        Upgrade
+    </button>
+    
+    <button id="click"
+            type="button"
+            onclick="addFunction()"
+            style="font-size:50px">Click +1</button>
+
+    <br>
+    <br>
+    
+    <button id="upgrade" type="button" onclick="upGrade2()" style="font-size:40px">
+        Upgrade 1 Click/1000ms
+    </button>
+    
+    <button id="auto" type="button" onclick="setTimeout(autoClicker(1), 1000)" style="font-size:40px">
+        AutoClicker OFF
+    </button>
+    
+    <script>
+        let x = 0
+        let add = 1
+        function addFunction(no) {
+            x += add
+            document.getElementById("add").innerHTML = x;
+        }
+        
+        function upGrade () {
+            if(x > 10*add-1) {
+                x -= 10*add;
+                add += 1
+                document.getElementById("click").textContent = "Click +" + add;
+                document.getElementById("add").innerHTML = x;
+            } else {null}
+        }
+
+        let status1 = "ON"
+        let time = 1000
+        let tMinus = 100
+        function autoClicker (ac) {
+            if (x > tMinus-1) {
+                if (ac == 1) {
+                x -= tMinus
+                setInterval(function () {
+                document.getElementById("click").click()}, time);
+                document.getElementById("auto").innerHTML = "AutoClicker " + status1;
+                } else {null}
+            } else {null}
+        }
+        
+        function upGrade2 () {
+            if (x > tMinus-1) {
+                tMinus += 100
+                let display = time - tMinus
+                document.getElementById("upgrade").innerHTML = "Upgrade 1 Click/" + display;
+            } else {null}
+        }
+        
+    </script>
+    
+
+</body>
+</html>
